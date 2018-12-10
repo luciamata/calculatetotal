@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <title> Increase Sales</title>
+    <script>
+    /* Input: Customer subtotal.
+     * Processing: If customer subtotal is greater than $50 and today is
+     *    Tuesday or Wednesday, subtract 10% from subtotal. Then add 6%
+          to the subtotal.
+     * Output: Total due.
+     */
+
+     function tuesWed() {
+       // Get user input
+       var beforeoffer = parseFloat(document.getElementById('subtotal').value);
+
+       //Calculate day of the week
+       var dayOfWeek = new Date().getDay();
+
+       //Subtract 10% if Tuesday or Wednesday
+       var offer
+       if ((beforeoffer > 50) && (dayOfWeek == "2" || dayOfWeek == "3")) {
+          offer = beforeoffer - (beforeoffer * .10);
+        }
+        else {
+          offer = beforeoffer;
+        }
+
+       //Add tax to subtotal
+       var totalWithTax = offer + (offer * 0.06);
+
+      //Output total to user
+       document.getElementById('outputDiv').innerHTML = totalWithTax
+     }
+    </script>
+  </head>
+
+  <body>
+    Please enter your subtotal: <input type="text" id="subtotal"><br>
+    <button type="button" onclick="tuesWed()">Calculate</button><br>
+    Your total is: <div id="outputDiv"></div>
+  </body>
+</html>
